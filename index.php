@@ -18,20 +18,22 @@ $url_handler = new \cloud2006\Urlgrabber($domain_name);
 <head lang="en">
     <link href="vendor/twitter/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Url checker</title>
 </head>
 <body>
 <div class="container">
-<div class="col-lg-12">
-<div class="col-lg-3">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<h2>Url checker</h2>
+<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
     <form action="" method="get">
         <div class="form-group">
         <input type="text" class="form-control" name="domain" placeholder="Enter domain name here">
+        <br/>
         <button type="submit" class="btn btn-info">Show Urls</button>
         </div>
     </form>
 </div>
-<div class="col-lg-12">   
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">   
 <table class="table table-striped">
 <tbody>
 <?php
