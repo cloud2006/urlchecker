@@ -7,11 +7,8 @@
  */
 require 'vendor/autoload.php';
 
-
 $domain_obj = new \cloud2006\DomainGetter();
-$domain_name = $domain_obj->domain;
-$url_handler = new \cloud2006\Urlgrabber($domain_name);
-
+$url_handler = new \cloud2006\Urlgrabber($domain_obj->domain);
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +19,7 @@ $url_handler = new \cloud2006\Urlgrabber($domain_name);
     <title>Url checker</title>
 </head>
 <body>
-<div class="container">
+<div class="container rs">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs">
 <h2>Url checker</h2>
 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 rs">
@@ -34,7 +31,7 @@ $url_handler = new \cloud2006\Urlgrabber($domain_name);
         </div>
     </form>
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">   
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs">   
 <table class="table table-striped">
 <tbody>
 <?php
