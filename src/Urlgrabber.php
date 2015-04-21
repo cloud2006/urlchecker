@@ -45,6 +45,19 @@ class Urlgrabber
         return $links;
     }
 
+    public function disp()
+    {
+      $links;
+      $links = $this->url_array_builder();
+
+      /**
+       * building table with links from site;
+      */
+      foreach ($links as $value) {       
+      echo '<tr><td>' . $value[0] . '</td></tr>'; 
+    }
+    }
+
     public function init()
     {
       $this->curl_worker();
