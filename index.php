@@ -37,6 +37,8 @@ $url_handler = new \cloud2006\Urlgrabber($domain_obj->domain);
 <?php
     $url_handler->init();
     $url_handler->disp();
+    //echo 'ext ' . $url_handler->ext_link_cnt . '<br>';
+    //echo 'int ' . $url_handler->int_link_cnt;
 ?>
 </tbody>
 </table>

@@ -5,7 +5,9 @@ class Urlgrabber
 {
     public $str_content,
               $url,
-              $link_array;
+              $link_array,
+              $ext_link_cnt = 0,
+              $int_link_cnt = 0;
     /**
      * copy adress to variable
      */
@@ -30,11 +32,11 @@ class Urlgrabber
 
     public function url_is_external($test_url)
     {
-      if($test_url == $this->url) {
-        return true; 
+      if(substr_count($test_url, $this->url) > 0) {
+        return false; 
       }
       else {
-        return false;
+        return true;
       }
     }
 
@@ -47,20 +49,22 @@ class Urlgrabber
 
     public function disp()
     {
-      $links;
-      $links = $this->url_array_builder();
-
-      /**
-       * building table with links from site;
-      */
-      foreach ($links as $value) {       
-      echo '<tr><td>' . $value[0] . '</td></tr>'; 
-    }
+      $links = $this->link_array;
+        /**
+         * building table with links from site;
+        */
+        foreach ($links as $value) {
+          if($this->url_is_external($value[0])){          
+            echo '<tr><td>' . $value[0] . '</td></tr>';
+            $this->ext_link_cnt++; 
+          }               
+        }
     }
 
     public function init()
     {
       $this->curl_worker();
+      $this->link_array = $this->url_array_builder();
       return $this->str_content;
 
     }
