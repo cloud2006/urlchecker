@@ -4,16 +4,26 @@ namespace cloud2006;
 class Urlgrabber
 {
     public $str_content,
-              $url,
-              $link_array,
-              $ext_link_cnt = 0,
-              $int_link_cnt = 0;
+           $url,
+           $link_array,
+           $ext_link_cnt = 0,
+           $int_link_cnt = 0,
+           $host;
     /**
      * copy adress to variable
+     * @param string $url
      */
     function __construct ($url)
     {
         $this->url = $url;
+        $this->host_getter($url);
+    }
+
+    public function host_getter($url)
+    {
+        $pattern ="#(?!w)[A-Za-z0-9-]{1,63}\.[A-Za-z]{2,6}#";
+        preg_match($pattern, $url, $arr_host);
+        $this->host = $arr_host[0];
     }
 
     /**
@@ -32,7 +42,7 @@ class Urlgrabber
 
     public function url_is_external($test_url)
     {
-      if(substr_count($test_url, $this->url) > 0) {
+      if(substr_count($test_url, $this->host) > 0) {
         return false; 
       }
       else {
@@ -47,17 +57,26 @@ class Urlgrabber
         return $links;
     }
 
-    public function disp()
+    public function disp($mode = 'ext')
     {
       $links = $this->link_array;
         /**
          * building table with links from site;
         */
-        foreach ($links as $value) {
-          if($this->url_is_external($value[0])){          
-            echo '<tr><td>' . $value[0] . '</td></tr>';
-            $this->ext_link_cnt++; 
-          }               
+        if($mode == 'ext'){
+            foreach ($links as $value) {
+              if($this->url_is_external($value[0])){
+                echo '<tr><td>' . $value[0] . '</td></tr>';
+                $this->ext_link_cnt++;
+              }
+            }
+        }elseif($mode == 'int'){
+            foreach ($links as $value) {
+                if(!$this->url_is_external($value[0])){
+                    echo '<tr class="info"><td>' . $value[0] . '</td></tr>';
+                    $this->int_link_cnt++;
+                }
+            }
         }
     }
 

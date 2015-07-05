@@ -1,6 +1,7 @@
 {
     "require": {
-        "twitter/bootstrap": "~3.3"
+        "twitter/bootstrap": "~3.3",
+	"components/jquery": "~2"
     },
     "autoload": {
         "psr-4": {

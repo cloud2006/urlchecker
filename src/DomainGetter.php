@@ -20,7 +20,9 @@ class DomainGetter
     {
         if(!empty($_GET)){
             return true;
-        }else return false;
+        }else {
+            return false;
+        }
     }
 
     public function acceptor()

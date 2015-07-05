@@ -8,7 +8,6 @@
 require 'vendor/autoload.php';
 
 $domain_obj = new \cloud2006\DomainGetter();
-$url_handler = new \cloud2006\Urlgrabber($domain_obj->domain);
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,21 +26,27 @@ $url_handler = new \cloud2006\Urlgrabber($domain_obj->domain);
         <div class="form-group">
         <input type="text" class="form-control" name="domain" placeholder="Enter domain name here">
         <br/>
-        <button type="submit" class="btn btn-info">Show Urls</button>
+        <button type="submit" class="btn btn-warning">Show Urls</button>
         </div>
     </form>
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs">   
-<table class="table table-striped">
-<tbody>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs">
 <?php
+if($domain_obj->domain != null) {
+    $url_handler = new \cloud2006\Urlgrabber($domain_obj->domain);
     $url_handler->init();
+    echo "<div><a class='btn btn-info' role='button' data-toggle='collapse' href='#collapseExt' aria-expanded='true' aria-controls='collapseExt'>External urls</a></div><table class='table table-striped collapse in' id='collapseExt'> <tbody>";
     $url_handler->disp();
+    echo "</tbody></table>";
+    echo "<a class='btn btn-success' role='button' data-toggle='collapse' href='#collapseInt' aria-expanded='false' aria-controls='collapseInt'>Internal urls</a> <table class='collapse table table-striped' id='collapseInt'> <tbody>";
+    $url_handler->disp('int');
+    echo "</tbody></table>";
+}
 ?>
-</tbody>
-</table>
 </div>
 </div>
 </div>
+<script src="vendor/components/jquery/jquery.min.js"></script>
+<script src="vendor/twitter/bootstrap/js/collapse.js"></script>
 </body>
 </html>
