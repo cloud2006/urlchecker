@@ -18,6 +18,9 @@ $domain_obj = new \cloud2006\DomainGetter();
     <title>Url checker</title>
 </head>
 <body>
+<?php
+    include_once 'gacode.php';
+?>
 <div class="container rs">
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 rs">
 <h2>Url checker</h2>
