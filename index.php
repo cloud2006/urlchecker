@@ -12,8 +12,6 @@ $domain_obj = new \cloud2006\DomainGetter();
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <link href="vendor/twitter/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="custom styles/custom.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Url checker</title>
@@ -50,6 +48,8 @@ if($domain_obj->domain != null) {
 </div>
 </div>
 </div>
+<link href="vendor/twitter/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="custom styles/custom.css" rel="stylesheet">
 <script src="vendor/components/jquery/jquery.min.js"></script>
 <script src="vendor/twitter/bootstrap/js/collapse.js"></script>
 </body>
