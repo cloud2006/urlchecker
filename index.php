@@ -14,6 +14,7 @@ $domain_obj = new \cloud2006\DomainGetter();
 <head lang="en">
     <link href="vendor/twitter/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="custom styles/custom.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Url checker</title>
 </head>
